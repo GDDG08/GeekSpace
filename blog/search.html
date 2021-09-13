@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Sirius">
+    <title>Geek Blog--Search</title>
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../assets/bootstrap-5.1.0/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="../js/blog.js"></script>
+<script type="text/javascript" src="../js/blogmgr.js"></script>
+
+    <style>
+      .form-group *{
+           padding-bottom: 1%;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../css/blog.css" rel="stylesheet">
+  </head>
+  <body onload="load_search()">
+    
+
+<div class="container">
+  <header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../index.html">
+          <img src="../images/logo.png" class="img-responsive" alt="Geek" height="100%" width="80px" >
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active"  aria-current="page" href="index.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="../tech news/index1.html" >News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="../learning/index.html" >Learning</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="../perfect_life/index.html" >Life</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" aria-current="page" href="../about/index.html" >About</a>
+          </li>
+        </ul>
+        <form class="d-flex" action="search.html">
+          <input class="form-control me-2" type="search" placeholder="Search" name="keywords" aria-label="Search">
+          <button class="btn btn-warning me-2" type="submit">Search</button>
+        </form>
+        <div class="btn-group btn-group-justified text-end">
+          <a id="account_1" href="../log_register/login.html" class="btn btn-outline-light me-2">Login</a>
+          <a id="account_2" href="../log_register/register.html" class="btn  btn-outline-light me-2">Register</a>
+        </div>    
+      </div>
+    </div>
+  </nav>
+</header>
+</div>
+
+<div class="nav-scroller py-5 mb-6">
+</div>
+<main class="container" >
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">Erlang</strong>
+          <h3 class="mb-0">Stay on top of your Erlang deps</h3>
+          <div class="mb-1 text-muted">2021 Sep 1</div>
+          <p class="card-text mb-auto">Over the past few years, we have spent several hackweeks writing, improving···</p>
+          <a href="https://tech.nextroll.com/blog/dev/2021/09/01/erlang-rebar3-depup.html" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img  src="../images/blog_img/blog_1.jpg" class="bd-placeholder-img" width="200" height="250" focusable="false">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success">Python</strong>
+          <h3 class="mb-0">HyperLogLog in Python</h3>
+          <div class="mb-1 text-muted">2021 June 5</div>
+          <p class="mb-auto">We recently open-sourced python-hll, which is an implementation of HyperLogLog whose goal is ···</p>
+          <a href="https://tech.nextroll.com/blog/dev/2019/10/01/hll-in-python.html" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img  src="../images/blog_img/blog_2.jpg" class="bd-placeholder-img" width="200" height="250" focusable="false">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row g-5">
+    <div class="col-md-8">
+      
+      <!--add new-->
+
+      <h3 class="pb-4 mb-4 fst-italic border-bottom">
+        Search Result(s)
+      </h3>
+      <h5 id="Searchnum" class="pb-4 mb-4">
+         blog(s) found in user submit blog!
+      </h5>
+      <div id="blog_list" class="row mb-2">
+                
+             </div>
+
+             <br>
+             <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <h2 class="blog-post-title">Add your new blog</h2>
+        </div>
+        <form role="form" validate="" onsubmit="return dopost();">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="post_title">Title</label>
+                <input type="text" id="post_title" class="form-control" name="title" placeholder="please input title" value="" required>
+              </div>
+              <div class="col-md-6">
+                 <label for="post_tags">Tags</label>
+                <input type="text" id="post_tags" class="form-control" name="tag" placeholder="divide multiple tags with semicolon ;" value="" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <label for="post_sysnosis">Synosis</label>
+                <textarea if="sys" id="post_synosis" class="form-control" rows="2" placeholder="input synosis within 20 words" required></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                 <label for="post_md">Textarea</label>
+                <textarea  if="text" id="post_md" class="form-control" rows="4" placeholder="please input with markdown" required></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 form-group">
+		        <label class="sr-only" for="inputfile">select .md file</label>
+		        <input type="file" id="inputfile" accept=".md,.txt" onchange="fileImport()">
+	        </div>
+          <div class="col-md-12 form-group">
+            <input type="submit" class="btn btn-outlined-light" style="color: white; background:black">
+          </div>
+        </form>
+      </div>
+      <hr>
+     
+
+      <nav class="blog-pagination" aria-label="Pagination">
+        <a class="btn btn-outline-primary" href="index2.html">Older</a>
+        <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
+      </nav>
+
+    </div>
+
+    <div class="col-md-4">
+      <div class="position-sticky" style="top: 2rem;">
+        <div class="p-4 mb-3 bg-light rounded">
+          <div class="row">
+            <div class="col-mb-4">
+                <div class="nav-scroller py-0 mb-7">
+                </div>
+                <svg t="1630723466977" class="icon item-align" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2167" width="50" height="50"><path d="M511.435945 302.584307m-302.584307 0a302.584307 302.584307 0 1 0 605.168614 0 302.584307 302.584307 0 1 0-605.168614 0Z" fill="#515151" p-id="2168"></path><path d="M803.763157 603.459098c-23.933222-18.804674-58.123539-17.095159-80.347245 5.128548-54.704508 54.704508-129.923205 88.894825-213.689483 88.894825s-158.984975-34.190317-213.689482-88.894825c-22.223706-22.223706-56.414023-25.642738-80.347245-5.128548C123.375845 682.096828 54.995211 782.958264 32.771505 921.429048c-8.547579 56.414023 30.771285 102.570952 88.894824 102.570952H902.915077c56.414023 0 97.442404-46.156928 88.894825-102.570952-23.933222-138.470785-92.313856-239.33222-188.046745-317.96995z" fill="#515151" p-id="2169"></path></svg>
+<!--                 <div class="dropdown open">
+                  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown trigger
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dLabel">
+                    <li><a href="#">good</a></li>
+                  </ul>
+                </div> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4">
+          <h4 class="fst-italic">Hot Blogger</h4>
+          <ol class="list-unstyled mb-0">
+            <li><a href="./level2/hxh.html" target="_blank">Xuhao Hu</a></li>
+            <li><a href="./level2/cqy.html" target="_blank">Qiyang Chen</a></li>
+            <li><a href="./level2/qyy.html" target="_blank">YingYu Qin</a></li>
+            <li><a href="./level2/zzh.html" target="_blank">ZiHan Zhuang</a></li>
+            <li><a href="https://blog.csdn.net/stpeace/" target="_blank">CSDN:stpeace</a></li>
+            <li><a href="https://blog.csdn.net/qq_41185868" target="_blank">CSDN:programmer of Virgo</a></li>
+            <li><a href="https://blog.csdn.net/yjclsx" target="_blank">CSDN:yjclsx</a></li>
+            <li><a href="https://github.com/JakeWharton" target="_blank">Github:JakeWharton</a></li>
+            <li><a href="https://github.com/chrisbanes" target="_blank">Github:Chris Banes</a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+          </ol>
+        </div>
+
+        <div class="p-4">
+          <h4 class="fst-italic">Elsewhere</h4>
+          <ol class="list-unstyled">
+            <li><a href="https://github.com/" target="_blank">GitHub</a></li>
+            <li><a href="https://www.csdn.net/" target="_blank">CSDN</a></li>
+            <li><a href="https://stackoverflow.com" target="_blank">Stackoverflow</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+            
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-muted py-5">
+    <div class="container">
+        <p class="float-end mb-1">
+            <a href="#">Back to top</a>
+        </p>
+        <p class="mb-1">© 2021·summer from BIT by <em>Sirius</em> &nbsp;&nbsp;&nbsp;<a href="index.html">More</a> </p>
+    </div>
+</footer>
+
+<script src="../assets/bootstrap-5.1.0/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="../js/user.js"></script>
+      <script>
+        var user = getcur();
+        if(user != null){
+          var root = getRootPath();
+           $("#account_1").text(user);
+           $("#account_1").attr("href",root+"log_register/Account.html");
+           $("#account_2").text("Log out");
+           $("#account_2").attr("href",root+"log_register/user.html?action=logout");
+        }
+      </script>
+  </body>
+</html>
